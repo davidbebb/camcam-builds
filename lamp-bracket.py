@@ -6,31 +6,32 @@
 cutterrad=3.175/2
 
 inner_rad = 30/2
-outer_rad = 70/2
+outer_rad = 60/2
 
-inset_depth = 2
+inset_depth = 2.5
 
-mount_number = 3
+mount_number = 2
 mount_cs_rad = 6.5/2
 mount_cs_depth = 3
 
-bolt_rad=6.5/2
+bolt_rad=5.5/2
 
-rota_lock_rad = cutterrad+0.1
+rota_lock_rad = 4.5/2
 rota_lock_depth = 3 + inset_depth
-rota_lock_distance = 15/2
+rota_lock_distance = 10
 #Do not edit below this line
 
 origin=V(0,0)
-distance = 2*((outer_rad - inner_rad)/3) + inner_rad
+distance = 1*((outer_rad - inner_rad)/2) + inner_rad
 mount_pos = origin + V(0, distance)
 mount_rad = 4.5/2
 
 plane = camcam.add_plane(Plane('xy', cutter='1/8_endmill'))
 
-plane.add_layer('bracket', 'pvc', 6)
+plane.add_layer('bracket', 'plywood', 12)
 
-border=Circle(origin, outer_rad)
+# border=Circle(origin, outer_rad)
+border=RoundedRect(origin, height=2*outer_rad, width=(2*inner_rad+5), rad=5, side='out', centred=True)
 
 adaptor=plane.add(Part(name='adaptor', layer='bracket', ignore_border=False, border=border))
 
